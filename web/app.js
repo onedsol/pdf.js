@@ -1206,6 +1206,56 @@ const PDFViewerApplication = {
     }
   },
 
+  // async saveToURL() {
+    // if (this._saveInProgress) {
+    //   return;
+    // }
+    // this._saveInProgress = true;
+    // await this.pdfScriptingManager.dispatchWillSave();
+    //
+    // try {
+    //   const data = await this.pdfDocument.saveDocument();
+      //   const uint8Array = new Uint8Array(data);
+      //   const blob = new Blob([uint8Array], { type: "application/pdf" });
+      //   const formData = new FormData();
+      //   // const pdfFilename = searchParams.get("title");
+      //   formData.append("file", blob, "");// pdfFilename);
+      //
+      //   const response = await fetch(
+      //     `http://localhost:63342/file?filePath=path1`, //`${baseUrl}/file?filePath=${searchParams.get("file")}`,
+      //     {
+      //       method: "POST",
+      //       body: formData,
+      //     }
+      //   );
+      //   if (response.ok) {
+      //     console.log("Success...");
+      //     // showSuccessMessage();
+      //   } else {
+      //     console.log("Failed...");
+      //     // showSuccessMessage();
+      //   }
+  //     this.downloadManager.download(data, this._downloadUrl, this._docFilename);
+  //   } catch (reason) {
+  //     // When the PDF document isn't ready, fallback to a "regular" download.
+  //     console.error(`Error when saving the document:`, reason);
+  //     await this.download();
+  //   } finally {
+  //     await this.pdfScriptingManager.dispatchDidSave();
+  //     this._saveInProgress = false;
+  //   }
+  //
+  //   if (this._hasAnnotationEditors) {
+  //     this.externalServices.reportTelemetry({
+  //       type: "editing",
+  //       data: {
+  //         type: "save",
+  //         stats: this.pdfDocument?.annotationStorage.editorStats,
+  //       },
+  //     });
+  //   }
+  // },
+
   async downloadOrSave() {
     // In the Firefox case, this method MUST always trigger a download.
     // When the user is closing a modified and unsaved document, we display a
@@ -1985,6 +2035,7 @@ const PDFViewerApplication = {
       opts
     );
     eventBus._on("print", this.triggerPrinting.bind(this), opts);
+    // eventBus._on("saveToURL", this.saveToURL().bind(this), opts);
     eventBus._on("download", this.downloadOrSave.bind(this), opts);
     eventBus._on("firstpage", () => (this.page = 1), opts);
     eventBus._on("lastpage", () => (this.page = this.pagesCount), opts);
@@ -2110,6 +2161,7 @@ const PDFViewerApplication = {
         signal,
       });
     }
+
     addWindowResolutionChange();
 
     window.addEventListener("wheel", onWheel.bind(this), {

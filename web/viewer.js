@@ -13,10 +13,22 @@
  * limitations under the License.
  */
 
+// Set as read only by params
+
 import { RenderingStates, ScrollMode, SpreadMode } from "./ui_utils.js";
 import { AppOptions } from "./app_options.js";
 import { LinkTarget } from "./pdf_link_service.js";
 import { PDFViewerApplication } from "./app.js";
+
+const searchParams = new URLSearchParams(window.location.search);
+console.log(searchParams.get("readOnly"));
+AppOptions.set(
+  "annotationMode",
+  searchParams.get("readOnly") &&
+    searchParams.get("readOnly").toLowerCase() === "true"
+    ? pdfjsLib.AnnotationMode.ENABLE
+    : pdfjsLib.AnnotationMode.ENABLE_FORMS
+);
 
 /* eslint-disable-next-line no-unused-vars */
 const pdfjsVersion =
@@ -72,6 +84,7 @@ function getViewerConfiguration() {
       editorSignatureParamsToolbar: document.getElementById(
         "editorSignatureParamsToolbar"
       ),
+      save: document.getElementById("saveButton"),
       download: document.getElementById("downloadButton"),
     },
     secondaryToolbar: {
