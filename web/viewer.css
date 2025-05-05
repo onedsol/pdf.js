@@ -117,7 +117,7 @@
   --toolbarButton-openFile-icon: url(images/toolbarButton-openFile.svg);
   /*#endif*/
   --toolbarButton-save-icon: url(images/toolbarButton-save.svg);
-  --toolbarButton-download-icon: url(images/toolbarButton-download.svg);
+  --toolbarButton-download-icon: url(images/toolbarButton-save.svg); /**url(images/toolbarButton-download.svg);*/
   --toolbarButton-bookmark-icon: url(images/toolbarButton-bookmark.svg);
   --toolbarButton-viewThumbnail-icon: url(images/toolbarButton-viewThumbnail.svg);
   --toolbarButton-viewOutline-icon: url(images/toolbarButton-viewOutline.svg);

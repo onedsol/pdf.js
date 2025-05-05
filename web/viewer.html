@@ -50,7 +50,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!--<script src="viewer.mjs" type="module"></script>-->
 <!--#elif /* Development mode. */-->
     <link rel="resource" type="application/l10n" href="locale/locale.json">
-
+    <script src="/config.js"></script>
     <script type="importmap">
       {
         "imports": {
@@ -338,9 +338,6 @@ See https://github.com/adobe-type-tools/cmap-resources
                 <div class="toolbarHorizontalGroup hiddenMediumView">
                   <button id="printButton" class="toolbarButton" type="button" tabindex="0" data-l10n-id="pdfjs-print-button">
                     <span data-l10n-id="pdfjs-print-button-label"></span>
-                  </button>
-                  <button id="saveButton" class="toolbarButton" type="button" tabindex="0" data-l10n-id="pdfjs-save-button">
-                    <span data-l10n-id="pdfjs-save-button-label"></span>
                   </button>
                   <button id="downloadButton" class="toolbarButton" type="button" tabindex="0" data-l10n-id="pdfjs-save-button">
                     <span data-l10n-id="pdfjs-save-button-label"></span>
@@ -807,5 +804,23 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
+    <div class="toast align-items-center text-white bg-success position-absolute bottom-0 end-0 "
+         role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto"><i class="bi bi-check-circle-fill"></i> Information</strong>
+      </div>
+      <div class="toast-body">
+        Document saved successfully!!!
+      </div>
+    </div>
+    <div class="toast align-items-center text-white bg-danger position-absolute bottom-0 end-0"
+         role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto"><i class="bi bi-exclamation-octagon-fill"></i> Error</strong>
+      </div>
+      <div class="toast-body">
+        Error saving the document!!!
+      </div>
+    </div>
   </body>
 </html>

@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
-// Set as read only by params
-
 import { RenderingStates, ScrollMode, SpreadMode } from "./ui_utils.js";
+import { AnnotationMode } from "./pdfjs.js";
 import { AppOptions } from "./app_options.js";
 import { LinkTarget } from "./pdf_link_service.js";
 import { PDFViewerApplication } from "./app.js";
 
+// Set as read only by params
 const searchParams = new URLSearchParams(window.location.search);
 console.log(searchParams.get("readOnly"));
 AppOptions.set(
   "annotationMode",
   searchParams.get("readOnly") &&
     searchParams.get("readOnly").toLowerCase() === "true"
-    ? pdfjsLib.AnnotationMode.ENABLE
-    : pdfjsLib.AnnotationMode.ENABLE_FORMS
+    ? AnnotationMode.ENABLE
+    : AnnotationMode.ENABLE_FORMS
 );
 
 /* eslint-disable-next-line no-unused-vars */
