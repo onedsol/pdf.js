@@ -1325,6 +1325,7 @@ class TextWidgetAnnotationElement extends WidgetAnnotationElement {
         }
         // Reset the cursor position to the start of the field (issue 12359).
         event.target.scrollLeft = 0;
+        console.log("Entro al onBlur");
       };
 
       if (this.enableScripting && this.hasJSActions) {

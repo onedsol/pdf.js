@@ -811,7 +811,8 @@ const PDFViewerApplication = {
 
     if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       if (file) {
-        this.open({ url: `/file?file=${file}` });
+        this.open({ url: file });
+        // this.open({ url: `/file?file=${file}` });
       } else {
         this._hideViewBookmark();
       }
